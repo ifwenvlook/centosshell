@@ -5,6 +5,8 @@
 
 #description: mongodb
 start() {
+  echo "never" > /sys/kernel/mm/transparent_hugepage/enabled
+  echo "never" > /sys/kernel/mm/transparent_hugepage/defrag
   /home/mongodb_simple/bin/mongod -f /home/mongodb_simple/conf/mongo.conf
 }
 
