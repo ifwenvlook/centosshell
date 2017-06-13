@@ -1,0 +1,14 @@
+#!/bin/sh -x
+touch /var/lock/subsys/local
+/usr/bin/setterm -blank 0 || true
+
+#/usr/bin/ssserver -s ::0 -p `cat /root/.kiwivm-shadowsocks-port` -k `cat /root/.kiwivm-shadowsocks-password` -m `cat /root/.kiwivm-shadowsocks-encryption` --user nobody --workers 2 -d start
+
+killall ssserver
+sleep 3
+/usr/bin/ssserver -c  /root/ssserver.ini -d start
+
+#sh /root/vps_start.sh
+
+sh /home/blog/centos_config/restartweb.sh
+
